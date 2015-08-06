@@ -91,7 +91,7 @@ lazy val compileSettings = Seq(
 
 lazy val scaladocSettings = Seq(
   scalacOptions in (Compile, doc) ++= Seq(
-    "-diagrams",
+    //"-diagrams",
     "-diagrams-debug",
     "-doc-source-url", scmInfo.value.get.browseUrl + "/tree/master€{FILE_PATH}.scala",
     "-sourcepath", baseDirectory.in(LocalRootProject).value.getAbsolutePath
