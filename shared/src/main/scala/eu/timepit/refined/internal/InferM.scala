@@ -7,7 +7,7 @@ import scala.reflect.macros.Context
 
 object InferM {
 
-  def macroImpl[T: c.WeakTypeTag, A: c.WeakTypeTag, B: c.WeakTypeTag, F[_, _]](c: Context)(t: c.Expr[F[T, A]])(
+  def macroImpl[T: c.WeakTypeTag, A: c.WeakTypeTag, B: c.WeakTypeTag, F[_, _]](c: Context)(ta: c.Expr[F[T, A]])(
     ir: c.Expr[A ==> B], w: c.Expr[Wrapper[F]]
   ): c.Expr[F[T, B]] = {
     import c.universe._
