@@ -185,12 +185,15 @@ private[refined] trait BooleanInferenceRules0 extends BooleanInferenceRules1 {
 
   implicit def xorCommutativity[A, B]: (A Xor B) ==> (B Xor A) =
     InferenceRule.alwaysValid("xorCommutativity")
+}
+
+private[refined] trait BooleanInferenceRules1 extends BooleanInferenceRules2 {
 
   implicit def modusTollens[A, B](implicit p1: A ==> B): Not[B] ==> Not[A] =
     p1.adapt("modusTollens(%s)")
 }
 
-private[refined] trait BooleanInferenceRules1 {
+private[refined] trait BooleanInferenceRules2 {
 
   implicit def conjunctionEliminationL[A, B, C](implicit p1: A ==> C): (A And B) ==> C =
     p1.adapt("conjunctionEliminationL(%s)")
