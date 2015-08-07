@@ -13,32 +13,26 @@ import shapeless.test.illTyped
 
 class InferSpec extends Properties("infer") {
 
-  /*
   property("Equal[_] ==> Digit") = secure {
     val a: Char @@ Equal[W.`'0'`.T] = '0'
     val b: Char @@ Digit = a
     illTyped("val c: Char @@ UpperCase = a", "invalid inference.*")
-    a == b
+    (a: Char) == b // the explicit type ascription is only needed for Scala 2.10
   }
-  */
 
-  /*
   property("GreaterEqual[A] ==> GreaterEqual[B]") = secure {
     val a: Double @@ GreaterEqual[W.`0.6`.T] = 0.6
     val b: Double @@ GreaterEqual[W.`0.5`.T] = a
     illTyped("val c: Double @@ GreaterEqual[W.`0.7`.T] = a", "invalid inference.*")
-    a == b
+    (a: Double) == b // the explicit type ascription is only needed for Scala 2.10
   }
-  */
 
-  /*
   property("Greater[Nat] ==> Greater[Nat]") = secure {
     val a: Int @@ Greater[_6] = 7
     val b: Int @@ Greater[_5] = a
     illTyped("val c: Int @@ Greater[_7] = a", "invalid inference.*")
-    a == b
+    (a: Int) == b // the explicit type ascription is only needed for Scala 2.10
   }
-  */
 
   property("StartsWith[A] ==> StartsWith[B]") = secure {
     val a: String @@ StartsWith[W.`"abc"`.T] = "abcd"
