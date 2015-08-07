@@ -85,6 +85,14 @@ lazy val compileSettings = Seq(
     "org.scalacheck" %%% "scalacheck" % "1.12.4" % "test"
   ),
 
+  libraryDependencies ++= {
+    if (scalaVersion.value startsWith "2.10.")
+      // this is required for shapeless.LabelledGeneric
+      Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.0.1" cross CrossVersion.full))
+    else
+      Seq.empty
+  },
+
   wartremoverErrors in (Compile, compile) ++= Warts.unsafe diff
     Seq(Wart.Any, Wart.DefaultArguments, Wart.AsInstanceOf, Wart.NonUnitStatements, Wart.Null, Wart.Throw)
 )
